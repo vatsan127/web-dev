@@ -1,33 +1,65 @@
-/** Data types (string, number, boolean, null, undefined, object)*/
-let userName = "John";
-const age = 25;
-var isStudent = true;
+// -----------------------------------------------
+// 1. DATA TYPES AND VARIABLES
+// -----------------------------------------------
+let userName = "John";           // string (mutable)
+const age = 25;                  // number (immutable)
+var isStudent = true;            // boolean (function-scoped)
 
 console.log(`Type - ${typeof userName}`);
-
 console.log(`Hello ${userName}, you are ${age} years old. You are ${isStudent ? 'a student' : 'not a student'}`);
 
-/**
- Arithmetic operators (+, -, *, /, %)
- Comparison operators (==, ===, !=, !==, <, >)
- Logical operators (&&, ||, !)
- Assignment operators (=, +=, -=, *=, /=)
- Ternary operator (condition ? true : false)
- */
+// -----------------------------------------------
+// 2. OPERATORS
+// -----------------------------------------------
+
+// Arithmetic operators (+, -, *, /, %)
+// Comparison operators (==, ===, !=, !==, <, >)
+// Logical operators (&&, ||, !)
+// Assignment operators (=, +=, -=, *=, /=)
+// Ternary operator (condition ? true : false)
+
 const age2 = '25';
-if (age == age2) { // matches only value and cast the RHS to LHS type
-    console.log('Easy matching');
+
+// Loose equality (type coercion)
+if (age == age2) {
+    console.log('Easy matching - converts types');
 }
 
-if (age === age2) { // Matches even the data type
-    console.log('Strict matching');
+// Strict equality (no type coercion)
+if (age === age2) {
+    console.log('Strict matching - same type and value');
 }
 
-/**
- •	if, else if, else statements
- •	ToDO: switch statements
- •	ToDo: Truthy and falsy values
- */
+// -----------------------------------------------
+// 3. TRUTHY AND FALSY VALUES
+// -----------------------------------------------
+
+// FALSY values (only 8 in JavaScript):
+console.log('=== FALSY VALUES ===');
+console.log(Boolean(false));      // false
+console.log(Boolean(0));          // false
+console.log(Boolean(-0));         // false
+console.log(Boolean(0n));         // false (BigInt zero)
+console.log(Boolean(""));         // false (empty string)
+console.log(Boolean(null));       // false
+console.log(Boolean(undefined));  // false
+console.log(Boolean(NaN));        // false
+
+// TRUTHY values (everything else):
+console.log('=== TRUTHY VALUES ===');
+console.log(Boolean(true));       // true
+console.log(Boolean(1));          // true
+console.log(Boolean(-1));         // true
+console.log(Boolean("hello"));    // true
+console.log(Boolean("0"));        // true (string "0" is truthy!)
+console.log(Boolean(" "));        // true (space is truthy)
+console.log(Boolean([]));         // true (empty array is truthy!)
+console.log(Boolean({}));         // true (empty object is truthy!)
+console.log(Boolean("false"));    // true (string is truthy)
+
+// -----------------------------------------------
+// 4. CONDITIONAL STATEMENTS
+// -----------------------------------------------
 
 function gradeCalculator(score) {
     if (score >= 90) {
@@ -41,53 +73,140 @@ function gradeCalculator(score) {
     }
 }
 
+console.log(`Grade: ${gradeCalculator(85)}`);
+
+// TODO: Add switch statements
+// TODO: Add more complex conditional examples
+
+// -----------------------------------------------
+// 5. LOOPS
+// -----------------------------------------------
+
+// Traditional for loop
+console.log('=== TRADITIONAL FOR LOOP ===');
 for (let i = 1; i <= 5; i++) {
-    console.log(i);     // Output: 1, 2, 3, 4, 5
+    console.log(i);
 }
 
 const fruits = ["apple", "banana", "orange", "grape"];
+
+// For loop with arrays
+console.log('=== FOR LOOP WITH ARRAYS ===');
 for (let i = 0; i < fruits.length; i++) {
     console.log(`Fruit ${i + 1}: ${fruits[i]}`);
 }
 
-console.log('For in '); // Iterates over enumerable properties (keys) of an object, including array indices.
-for (const fruit in fruits) {
-    console.log(fruit);
+// For-in loop (iterates over keys/indices)
+console.log('=== FOR-IN LOOP (keys/indices) ===');
+for (const index in fruits) {
+    console.log(`Index: ${index}, Value: ${fruits[index]}`);
 }
 
-console.log('For of '); // Iterates over values of iterable objects (arrays, strings, etc.).
+// For-of loop (iterates over values)
+console.log('=== FOR-OF LOOP (values) ===');
 for (const fruit of fruits) {
-    console.log(fruit);
+    console.log(`Value: ${fruit}`);
 }
 
+// For-of with entries (index and value)
+console.log('=== FOR-OF WITH ENTRIES ===');
 for (let [index, fruit] of fruits.entries()) {
     console.log(`${index}: ${fruit}`);
 }
 
-console.log(`grade ${gradeCalculator(10)}`);
+// -----------------------------------------------
+// 6. FUNCTIONS
+// -----------------------------------------------
 
-// These are the ONLY falsy values in JavaScript:
-console.log(Boolean(false));      // false
-console.log(Boolean(0));          // false
-console.log(Boolean(-0));         // false
-console.log(Boolean(0n));         // false (BigInt zero)
-console.log(Boolean(""));         // false (empty string)
-console.log(Boolean(null));       // false
-console.log(Boolean(undefined));  // false
-console.log(Boolean(NaN));        // false
+// Regular function declaration
+function getRectangleAreaFunc(width, height) {
+    return width * height;
+}
 
-// Truthy, includes:
-console.log(Boolean(true));       // true
-console.log(Boolean(1));          // true
-console.log(Boolean(-1));         // true
-console.log(Boolean("hello"));    // true
-console.log(Boolean("0"));        // true (string "0" is truthy!)
-console.log(Boolean(" "));        // true (space is truthy)
-console.log(Boolean([]));         // true (empty array is truthy!)
-console.log(Boolean({}));         // true (empty object is truthy!)
-console.log(Boolean(function () {
-})); // true
-console.log(Boolean("false"));    // true (string is truthy)
-console.log(Boolean("0"));        // true (string is truthy)
-console.log(Boolean([]));         // true (empty array is truthy)
-console.log(Boolean({}));         // true (empty object is truthy)
+// Arrow function (ES6)
+const getRectangleArea = (width, height) => {
+    return width * height;
+};
+
+// Arrow function (concise syntax)
+const getRectangleAreaConcise = (width, height) => width * height;
+
+console.log('=== FUNCTION EXAMPLES ===');
+console.log(`Regular function: ${getRectangleAreaFunc(2, 5)}`);
+console.log(`Arrow function: ${getRectangleArea(2, 5)}`);
+console.log(`Concise arrow: ${getRectangleAreaConcise(2, 5)}`);
+
+// -----------------------------------------------
+// 7. OBJECTS AND 'THIS' BEHAVIOR
+// -----------------------------------------------
+
+let globalName = "Global Context";
+
+const Person = {
+    name: "John",
+
+    // Regular function - 'this' refers to the object
+    regularFunc: function () {
+        console.log(`Regular function this.name: ${this.name}`);
+    },
+
+    // Arrow function - 'this' refers to global context
+    arrowFunc: () => {
+        console.log(`Arrow function this.name: ${this.name}`); // undefined or global
+    },
+
+    address: {
+        city: "Boston",
+        state: "MA"
+    }
+};
+
+console.log('=== OBJECT AND THIS BEHAVIOR ===');
+console.log(Person);
+Person.regularFunc();  // 'this' = Person object
+Person.arrowFunc();    // 'this' = global context
+
+// -----------------------------------------------
+// 8. DESTRUCTURING
+// -----------------------------------------------
+
+console.log('=== DESTRUCTURING EXAMPLES ===');
+
+// Object destructuring with renaming
+const {name: personName} = Person;
+console.log(`Destructured name: ${personName}`);
+
+// Nested object destructuring
+const {address: {city}} = Person;
+console.log(`Destructured city: ${city}`);
+
+// Array destructuring with rest operator
+const arr = ['one', 'two', 'three', 'four'];
+const [first, second, ...remaining] = arr;
+console.log(`First: ${first}`);
+console.log(`Second: ${second}`);
+console.log(`Remaining:`, remaining);
+
+// -----------------------------------------------
+// 9. ARRAY METHODS
+// -----------------------------------------------
+
+console.log('=== ARRAY METHODS ===');
+
+// Map method - transforms each element
+const numberedFruits = fruits.map((fruit, index) => `${index + 1}. ${fruit}`);
+console.log('Mapped fruits:', numberedFruits);
+
+// Reduce method - accumulates values
+const numbers = [1, 2, 3, 4, 5];
+const total = numbers.reduce((accumulator, current) => accumulator + current, 0);
+console.log(`Sum of numbers: ${total}`);
+
+// -----------------------------------------------
+// 10. OPTIONAL CHAINING (ES2020)
+// -----------------------------------------------
+
+console.log('=== OPTIONAL CHAINING ===');
+console.log(`Safe property access: ${Person.address?.street?.number}`); // undefined (no error)
+console.log(`Existing property: ${Person.address?.city}`); // "Boston"
+
