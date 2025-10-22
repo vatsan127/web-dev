@@ -75,9 +75,6 @@ function gradeCalculator(score) {
 
 console.log(`Grade: ${gradeCalculator(85)}`);
 
-// TODO: Add switch statements
-// TODO: Add more complex conditional examples
-
 // -----------------------------------------------
 // 5. LOOPS
 // -----------------------------------------------
@@ -129,7 +126,7 @@ const getRectangleArea = (width, height) => {
 };
 
 // Arrow function (concise syntax)
-const getRectangleAreaConcise = (width, height) => width * height;
+const getRectangleAreaConcise = (width, height) => (width * height);
 
 console.log('=== FUNCTION EXAMPLES ===');
 console.log(`Regular function: ${getRectangleAreaFunc(2, 5)}`);
@@ -194,7 +191,9 @@ console.log(`Remaining:`, remaining);
 console.log('=== ARRAY METHODS ===');
 
 // Map method - transforms each element
-const numberedFruits = fruits.map((fruit, index) => `${index + 1}. ${fruit}`);
+const numberedFruits = fruits.map((fruit, index) => {
+    return `${index + 1}. ${fruit}`;
+});
 console.log('Mapped fruits:', numberedFruits);
 
 // Reduce method - accumulates values
@@ -210,3 +209,36 @@ console.log('=== OPTIONAL CHAINING ===');
 console.log(`Safe property access: ${Person.address?.street?.number}`); // undefined (no error)
 console.log(`Existing property: ${Person.address?.city}`); // "Boston"
 
+// -----------------------------------------------
+// 11. SHORT CIRCUITING
+// -----------------------------------------------
+
+console.log('=== SHORT CIRCUITING ===');
+
+// OR operator (||) - returns first truthy value or last value
+
+// Found a truthy value - returns it immediately
+const result1 = 'Hello' || 'World';
+console.log(result1); // 'Hello' (first truthy value)
+
+// All values are falsy - returns the LAST value
+const result2 = false || 0 || null || undefined;
+console.log(result2); // undefined (last value, even though it's falsy)
+
+// Another example with all falsy values
+const result3 = '' || 0 || false;
+console.log(result3); // false (last value)
+
+
+// AND operator (&&) - returns first falsy value or last value
+// Found a falsy value - returns it immediately
+const result1 = true && 0 && 'Hello';
+console.log(result1); // 0 (first falsy value)
+
+// All values are truthy - returns the LAST value
+const result2 = 'Hello' && 'World' && 'Goodbye';
+console.log(result2); // 'Goodbye' (last value)
+
+// Another example with all truthy values
+const result3 = 5 && 'test' && true;
+console.log(result3); // true (last value)
