@@ -1,0 +1,40 @@
+.box {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  border: 1px solid black;
+}
+
+.container {
+  height: 500px;
+  border: 2px solid black;
+
+  /* Flex CSS */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* flex-wrap: wrap; */
+  /* align-content: center; */
+  gap: 10px;
+}
+
+.box-1 {
+  background-color: orange;
+  align-self: flex-end; /* Overrides align-items for this specific item will not work if the align content is specified*/
+
+  flex-grow: 1;
+}
+
+.box-2 {
+  background-color: yellow;
+}
+
+.box-3 {
+  background-color: limegreen;
+}
+
+.box-4 {
+  background-color: violet;
+  order: -1; /* Changes the order of the item */
+}

@@ -1,0 +1,51 @@
+.box {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  border: 1px solid black;
+}
+
+.container {
+  /* height: 500px; */
+  border: 2px solid black;
+
+  /* Flex CSS */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  position: relative;
+  gap: 10px;
+}
+
+.box-1 {
+  background-color: orange;
+  /* Relative Positioning */
+  position: relative;
+  top: 50px;
+  z-index: 2;
+}
+
+.box-2 {
+  background-color: yellow;
+  /* Absolute Positioning */
+  /* Positioned relative to the nearest positioned ancestor (.container) */
+  /* Removed from the normal document flow*/
+  position: absolute;
+  left: 150px;
+}
+
+.box-3 {
+  background-color: limegreen;
+  /* 
+    Sticky Positioning:
+    - The element scrolls normally until it reaches 50px from the top of the viewport.
+    - Once it hits that point, it stays "stuck" there while its parent element is still visible.
+    - When the parent element scrolls out of view, the sticky element scrolls away with it.
+  */
+  position: sticky;
+  top: 50px;
+}
+
+.box-4 {
+  background-color: violet;
+}
