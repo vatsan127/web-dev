@@ -1,0 +1,15 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem; /* adds space between boxes */
+  padding: 1rem;
+}
+
+.box {
+  border: 2px solid black;
+  text-align: center;
+  background-color: lightgray;
+  padding: 1rem;
+  border-radius: 8px;
+  box-sizing: border-box;
+}

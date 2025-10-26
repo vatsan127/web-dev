@@ -1,0 +1,39 @@
+.box {
+  border: 2px solid black;
+  /* width: 200px;
+  height: 200px; */
+  text-align: center;
+  position: relative;
+  background-color: lightgray;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 1fr 1fr;
+
+  grid-template-areas:
+    "header header header"
+    "sidebar content content"
+    "sidebar footer footer";
+
+  gap: 10px;
+}
+
+.box-1 {
+  grid-area: header;
+  grid-column: span 2;
+}
+
+.box-2 {
+  grid-area: sidebar;
+}
+
+.box-3 {
+  grid-area: content;
+  grid-row: 2/-1;
+}
+
+.box-5 {
+  grid-area: footer;
+}
